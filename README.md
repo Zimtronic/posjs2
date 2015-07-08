@@ -1,8 +1,12 @@
 ![Posjs](docs/images/posjs_logo.png)
 
-Posjs is a web based POS(Point of Sale) container and hardware bridge. We use the Qt WebKit bridge 
-mechanism to extend javascript environment with c++ objects. That objects are used 
-to access hardware-specific features like printing and scan text codes with HID USB devices.
+Posjs is a web based POS (Point of Sale) container and hardware bridge. 
+In this version we use Apache Cordova platform to allow building of native 
+mobile applications using HTML, CSS and JavaScript. 
+
+We use a tcp socket cordova plugin to extend javascript environment with objects. 
+That objects are used to access hardware-specific features like printing and 
+scan text codes with HID USB devices.
 
 See [LICENSE](LICENSE).
 
