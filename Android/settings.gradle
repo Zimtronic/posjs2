@@ -1,0 +1,2 @@
+include ':socketDemoAppCordovaLib'
+include ':socketDemoApp'

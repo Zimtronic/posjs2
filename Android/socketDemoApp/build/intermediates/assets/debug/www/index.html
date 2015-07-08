@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+ 
+ http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=320, user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Cordova Tests</title>
+    <link rel="stylesheet" href="css/master.css" type="text/css" media="screen" title="no title">
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="sellpoint.js"></script>
+    <script>
+        BarCodeScanner.packetRead.connect(function(ev){
+              console.log('Data has been received: ', JSON.stringify(ev.metadata));
+
+              //alert(ev.metadata.data);
+              document.getElementById("result").innerHTML = removeInitialChar(ev.metadata.data);
+
+              var p = JSON.parse(ev.metadata.data);
+              console.log(p);
+        });
+
+        MagneticScanner.packetRead.connect(function(ev){
+              console.log('Data has been received: ', JSON.stringify(ev.metadata));
+
+              //alert(ev.metadata.data);
+              document.getElementById("result").innerHTML = removeInitialChar(ev.metadata.data);
+
+              var p = JSON.parse(ev.metadata.data);
+              console.log(p);
+        });
+        function create_connection(ip, host)
+        {
+            ip = document.getElementById("host").value;
+            port = document.getElementById("port").value;
+            sellPoint.initialize_connection_layer(CONN_DEVICE.TCP, ip, port);
+            sellPoint.connect();
+        }
+        function hello_world()
+        {
+            ESCPOSPrinter.init();
+            ESCPOSPrinter.setTextProperties(0,0,4,2,2);
+            ESCPOSPrinter.printRawText("...HELLO WORLD...");
+            ESCPOSPrinter.feedControl(0);
+        }
+
+        function text_align()
+        {
+            ESCPOSPrinter.init();
+            ESCPOSPrinter.setTextProperties(2,0,0,1,1);
+            ESCPOSPrinter.printRawText("align-left, font-A, type-B, width-normal, heigth-normal");
+            ESCPOSPrinter.feedControl(0);
+            ESCPOSPrinter.feedControl(0);
+            ESCPOSPrinter.setTextProperties(0,1,0,1,1);
+            ESCPOSPrinter.printRawText("align-center, font-B, type-B, width-normal, heigth-normal");
+            ESCPOSPrinter.feedControl(0);
+            ESCPOSPrinter.feedControl(0);
+            ESCPOSPrinter.setTextProperties(1,1,1,2,1);
+            ESCPOSPrinter.printRawText("align-right, font-B, type-U, width-double, heigth-normal");
+            ESCPOSPrinter.feedControl(0);
+            ESCPOSPrinter.feedControl(0);
+            ESCPOSPrinter.setTextProperties(1,1,2,1,2);
+            ESCPOSPrinter.printRawText("align-right, font-B, type-U2, width-normal, heigth-double");
+            ESCPOSPrinter.feedControl(0);
+            ESCPOSPrinter.feedControl(0);
+            ESCPOSPrinter.setTextProperties(0,0,4,2,2);
+            ESCPOSPrinter.printRawText("align-center, font-A, type-BU2, width-double, heigth-double");
+            ESCPOSPrinter.feedControl(0);
+            ESCPOSPrinter.feedControl(0);
+        }
+
+
+    </script>
+</head>
+<body onload="init();" id="stage" class="theme">
+<h1>SellPoint App Test</h1>
+<div id="info">
+    <h4>Cordova: <span id="cordova"> &nbsp;</span></h4>
+    <h4>Deviceready: <span id="deviceready"> &nbsp;</span></h4>
+</div>
+<div id="info">
+    <h2 id="result">Waiting for server result</h2>
+</div>
+<div>
+    <b>Host</b> <input id="host" class="btn large" value="10.8.25.111"></input>
+</div>
+<div>
+    <b>Port:</b> <input id="port" class="btn large" value="8888"> </input>
+</div>
+<button class="btn large" onclick="create_connection()">Connect</button>
+
+<button class="btn large"  onclick="hello_world();">Hello World</button>
+<button class="btn large"  onclick="text_align();">Text Align</button>
+<button class="btn large"  onclick="ESCPOSPrinter.cutPaper(true)">cutPaper</button>
+<button class="btn large"  onclick="ESCPOSPrinter.sendPulseToCashDrawer(2)">sendPulseToCashDrawer</button>
+<button class="btn large"  onclick="ESCPOSPrinter.setTextProperties(0, 1, 2, 3, 4)">setTextProperties</button>
+<button class="btn large"  onclick="ESCPOSPrinter.feedControl(1)">feedControl</button>
+<button class="btn large"  onclick="ESCPOSPrinter.printImage('~/image/foo.img',1,1)">printImage</button>
+<button class="btn large"  onclick="ESCPOSPrinter.printBarcode('code',1, 1, 1, 1, 1)">printBarcode</button>
+<button class="btn large"  onclick="ESCPOSPrinter.printQRCode('code',1, 1)">printQRCode</button>
+<button class="btn large"  onclick="ESCPOSPrinter.setTimeout(100)">setTimeout</button>
+<button class="btn large"  onclick="sellPoint.isConnected()">is Connected</button>
+<button class="btn large"  onclick="sellPoint.send('BTest')">Send</button>
+<button class="btn large"  onclick="sellPoint.disconnect()">Disconnect</button>
+<button class="btn large"  onclick="sellPoint.disconnectAll()">DisconnectAll</button>
+
+</body>
+</html>
+
+
