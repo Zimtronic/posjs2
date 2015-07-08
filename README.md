@@ -20,7 +20,7 @@ See [LICENSE](LICENSE).
 * [Git](http://git-scm.com/).
 * [Qt5.3.0](http://qt-project.org/downloads).
 
-### Build and run
+### Server
 
 1. Open your command prompt and download the latest [posjs](https://github.com/Zimtronic/posjs2).
 
@@ -32,3 +32,5 @@ See [LICENSE](LICENSE).
 2. Execute `qmake` to create Makefile. 
 3. Execute `make` to compile.
 4. Execute `sudo ./server` to run the posjs browser app. Don't forget to prefix with `sudo`. 
+
+### Android SDK
