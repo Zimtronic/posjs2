@@ -27,6 +27,7 @@ See [LICENSE](LICENSE).
 * Linux based OS with 64-bit or 32-bit architecture. 
 * C++ toolchain.
 * libusb-0.1-4.
+* Android Studio.
 * [Git](http://git-scm.com/).
 * [Qt5.3.0](http://qt-project.org/downloads).
 
@@ -36,7 +37,7 @@ See [LICENSE](LICENSE).
 
  ```sh
   git clone https://github.com/Zimtronic/posjs2.git
-  cd posjs
+  cd posjs2/Server
   ```
   
 2. Execute `qmake` to create Makefile. 
