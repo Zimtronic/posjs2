@@ -8,6 +8,8 @@ We use a tcp socket cordova plugin to extend javascript environment with objects
 That objects are used to access hardware-specific features like printing and 
 scan text codes with HID USB devices.
 
+![Posjs](docs/images/deploy.png)
+
 See [LICENSE](LICENSE).
 
 ## Building
