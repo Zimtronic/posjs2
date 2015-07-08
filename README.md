@@ -41,6 +41,6 @@ See [LICENSE](LICENSE).
   
 2. Execute `qmake` to create Makefile. 
 3. Execute `make` to compile.
-4. Execute `sudo ./server` to run the posjs browser app. Don't forget to prefix with `sudo`. 
+4. Execute `sudo ./server` to run the Server. Don't forget to prefix with `sudo`. 
 
 ### Android SDK
