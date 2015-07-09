@@ -27,13 +27,13 @@ See [LICENSE](LICENSE).
 * Linux based OS with 64-bit or 32-bit architecture. 
 * C++ toolchain.
 * libusb-0.1-4.
-* Android Studio.
+* Android Studio 1.0.2 or newer.
 * [Git](http://git-scm.com/).
 * [Qt5.3.0](http://qt-project.org/downloads).
 
 ### Server
 
-1. Open your command prompt and download the latest [posjs](https://github.com/Zimtronic/posjs2).
+1. Open your command prompt and download the latest [posjs2](https://github.com/Zimtronic/posjs2).
 
  ```sh
   git clone https://github.com/Zimtronic/posjs2.git
@@ -45,3 +45,9 @@ See [LICENSE](LICENSE).
 4. Execute `sudo ./server` to run the Server. Don't forget to prefix with `sudo`. 
 
 ### Android SDK
+
+1. Execute Android Studio IDE
+2. Use Open option in the File menu (File->Open) and locate the Android 
+   directory into de posjs2 root directory.
+3. Use an usb data cable and connect a tablet with Android to the PC.
+4. Send the android app to your table, use the Run option (Shift+F10). 
