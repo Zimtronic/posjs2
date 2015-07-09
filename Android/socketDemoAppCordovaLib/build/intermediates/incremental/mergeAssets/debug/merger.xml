@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/home/tony/Desktop/PoSJavaScript/android/socketDemoAppCordovaLib/src/main/assets"/></dataSet><dataSet config="debug"><source path="/home/tony/Desktop/PoSJavaScript/android/socketDemoAppCordovaLib/src/debug/assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/home/tony/Desktop/PoSJavaScript/gitv2/Android/socketDemoAppCordovaLib/src/main/assets"/></dataSet><dataSet config="debug"><source path="/home/tony/Desktop/PoSJavaScript/gitv2/Android/socketDemoAppCordovaLib/src/debug/assets"/></dataSet></merger>

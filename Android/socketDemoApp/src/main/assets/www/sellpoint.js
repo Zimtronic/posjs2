@@ -69,35 +69,52 @@ function stub(d) {
     //alert("Connected");
 }
 
+function req_disconnect(d)
+{
+    document.getElementById("result").innerHTML = "NOT CONNECTED";
+
+}
+
+function repeat_validation()
+{
+   window.tlantic.plugins.socket.isConnected(key, stub, req_disconnect);
+   window.setTimeout(repeat_validation, 2000);
+}
+
 function on_connect(d) {
-    document.getElementById("result").innerHTML = "CONNECTION ERROR";
+    document.getElementById("result").innerHTML = "CONNECTED";
 }
 
 TCPConn.prototype.onConnect = function (k) {
     console.log('Established connection with ', k);
     document.getElementById("result").innerHTML = "CONNECTED";
+    window.tlantic.plugins.socket.isConnected(key, stub, req_disconnect);
+
     key = k;
 }
 
 TCPConn.prototype.connect = function () {
-    window.tlantic.plugins.socket.connect(this.onConnect, on_connect, this.host, this.port);
+    window.tlantic.plugins.socket.connect(this.onConnect, req_disconnect, this.host, this.port);
+
 
 }
 
 TCPConn.prototype.send = function (data) {
+    //data = data + ""
     window.tlantic.plugins.socket.send(stub, stub, key, data);
 }
 
 TCPConn.prototype.disconnect = function () {
-    window.tlantic.plugins.socket.disconnect(stub, stub, key);
+    window.tlantic.plugins.socket.disconnect(req_disconnect, req_disconnect, key);
 }
 
 TCPConn.prototype.disconnectAll = function () {
-    window.tlantic.plugins.socket.disconnectAll(stub, stub);
+    window.tlantic.plugins.socket.disconnectAll(req_disconnect, req_disconnect);
 }
 
 TCPConn.prototype.isConnected = function () {
-    window.tlantic.plugins.socket.isConnected(key, stub, stub);
+    window.tlantic.plugins.socket.isConnected(key, stub, req_disconnect);
+
 }
 
 /*** SellPoint ***/
@@ -108,6 +125,8 @@ SellPoint.prototype.initialize_connection_layer = function (device, host, port) 
        this.connection_layer.port = port;
        this.connection_layer.parent = this;
        document.addEventListener('SOCKET_RECEIVE_DATA_HOOK', this.connCallback);
+       window.setTimeout(repeat_validation, 2000);
+
    }
 }
 
@@ -117,7 +136,7 @@ SellPoint.prototype.onConnect = function (k) {
 }
 
 SellPoint.prototype.connect = function () {
-    this.connection_layer.connect(this.onConnect, on_connect, this.host, this.port);
+    this.connection_layer.connect(this.onConnect, stub, this.host, this.port);
 }
 
 SellPoint.prototype.send = function (data) {

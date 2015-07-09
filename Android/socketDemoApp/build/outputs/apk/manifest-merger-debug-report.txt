@@ -61,7 +61,7 @@ ADDED from AndroidManifest.xml:8:17
 		ADDED from AndroidManifest.xml:8:27
 uses-sdk
 ADDED from AndroidManifest.xml:12:5
-MERGED from android:socketDemoAppCordovaLib:unspecified:25:5
+MERGED from Android:socketDemoAppCordovaLib:unspecified:25:5
 	android:targetSdkVersion
 		ADDED from AndroidManifest.xml:12:42
 		INJECTED from AndroidManifest.xml:0:0

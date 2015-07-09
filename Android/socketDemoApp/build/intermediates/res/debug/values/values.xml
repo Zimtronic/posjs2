@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/home/tony/Desktop/PoSJavaScript/android/socketDemoApp/src/main/res/values/strings.xml -->
+    <!-- From: file:/home/tony/Desktop/PoSJavaScript/gitv2/Android/socketDemoApp/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="app_name">SocketDemoApp</string>
 </resources>

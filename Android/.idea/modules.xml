@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Android.iml" filepath="$PROJECT_DIR$/Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" />
       <module fileurl="file://$PROJECT_DIR$/socketDemoApp/socketDemoApp.iml" filepath="$PROJECT_DIR$/socketDemoApp/socketDemoApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/socketDemoAppCordovaLib/socketDemoAppCordovaLib.iml" filepath="$PROJECT_DIR$/socketDemoAppCordovaLib/socketDemoAppCordovaLib.iml" />

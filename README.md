@@ -28,6 +28,7 @@ See [LICENSE](LICENSE).
 * C++ toolchain.
 * libusb-0.1-4.
 * Android Studio 1.0.2 or newer.
+* Android SDK.
 * [Git](http://git-scm.com/).
 * [Qt5.3.0](http://qt-project.org/downloads).
 
@@ -50,4 +51,5 @@ See [LICENSE](LICENSE).
 2. Use Open option in the File menu (File->Open) and locate the Android 
    directory into de posjs2 root directory.
 3. Use an usb data cable and connect a tablet with Android to the PC.
-4. Send the android app to your table, use the Run option (Shift+F10). 
+4. Check sdk.dir into local.properties file (Gradle Scripts->local.properties). 
+5. Send the android app to your table, use the Run option (Shift+F10). 

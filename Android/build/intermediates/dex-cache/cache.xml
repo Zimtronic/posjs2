@@ -2,11 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/home/tony/Desktop/PoSJavaScript/android/socketDemoApp/build/intermediates/exploded-aar/android/socketDemoAppCordovaLib/unspecified/classes.jar"
+        jar="/home/tony/Desktop/PoSJavaScript/gitv2/Android/socketDemoApp/build/intermediates/exploded-aar/Android/socketDemoAppCordovaLib/unspecified/classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="c91012c8087e890dd7d4b5d0dc5dd045304f727c">
-        <dex dex="/home/tony/Desktop/PoSJavaScript/android/socketDemoApp/build/intermediates/pre-dexed/debug/classes-ceb5d64a4143cf1cc3e2e507c56ecfdcd70db16c.jar" />
+        sha1="85c731527d7e07235aeb06dd47439a7756c25828">
+        <dex dex="/home/tony/Desktop/PoSJavaScript/gitv2/Android/socketDemoApp/build/intermediates/pre-dexed/debug/classes-284c3277b5a34c332e4bbdaf6ac663866ce71cd1.jar" />
     </item>
 
 </items>
