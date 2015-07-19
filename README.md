@@ -31,6 +31,7 @@ See [LICENSE](LICENSE).
 * Android SDK.
 * [Git](http://git-scm.com/).
 * [Qt5.3.0](http://qt-project.org/downloads).
+* [libposjs](https://github.com/Zimtronic/libposjs).
 
 ### Server
 
