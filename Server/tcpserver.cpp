@@ -1,8 +1,8 @@
 #include "tcpserver.h"
 #include "connection.h"
-#include "drivers/escposprinter.h"
-#include "drivers/linuxusb.h"
-#include "drivers/generichidscanner.h"
+
+#include <QDir>
+#include <QPluginLoader>
 
 TCPServer::TCPServer(QObject *parent) :
     QTcpServer(parent)
@@ -15,28 +15,38 @@ TCPServer::TCPServer(QObject *parent) :
     }
     else
     {
-        qDebug() << "Listening to port " << this->serverPort() << "...";
+        qDebug() << "Server listening on port: " << this->serverPort();
 
-        printer = new ESCPOSPrinter();
-        transport = new LinuxUSB();
-        printer->setTransport(transport);
-
-        hidBarcode = new GenericHIDScanner();
-        hidBarcode->start();
-
-        hidMagnetic = new GenericHIDScanner();
-        hidMagnetic->setIdProduct(0x0001);
-        hidMagnetic->setIdVendor(0x0801);
-        hidMagnetic->start();
+        loadDriver();
     }
+}
+
+void TCPServer::loadDriver()
+{
+    QPluginLoader pluginLoader("libposjs.so");
+    pluginLoader.load();
+    QObject *plugin = pluginLoader.instance();
+
+    posdriver = qobject_cast<POSDriverInterface*>(plugin);
+
+    if(posdriver)
+    {
+        qDebug() << "libposjs OK...!!!";
+    }
+    else
+    {
+        qDebug() << "libposjs not found...!!!";
+    }
+}
+
+POSDriverInterface *TCPServer::getPosdriver() const
+{
+    return posdriver;
 }
 
 void TCPServer::incomingConnection(qintptr socketDescriptor)
 {
     Connection *conn = new Connection(socketDescriptor, 0, this);
-    conn->setHidBarcode(hidBarcode);
-    conn->setHidMagnetic(hidMagnetic);
-    conn->setPrinter(printer);
     connections.append(conn);
 }
 

@@ -78,6 +78,10 @@ h1 {
     text-align:center;
 }
 
+h4 {
+    word-wrap: break-word;
+}
+
 .event {
     border-radius:4px;
     -webkit-border-radius:4px;

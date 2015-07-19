@@ -36,6 +36,7 @@
     margin:15px 6px 0;
     width:295px;
     padding:4px 0px 2px 10px;
+    word-wrap: break-word;
   }
   
   #info > h4{

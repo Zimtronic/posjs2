@@ -29,76 +29,204 @@
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="sellpoint.js"></script>
     <script>
-        BarCodeScanner.packetRead.connect(function(ev){
-              console.log('Data has been received: ', JSON.stringify(ev.metadata));
+    BarCodeScanner.packetRead.connect(function(ev){
+          console.log('Data has been received: ', JSON.stringify(ev.metadata));
 
-              //alert(ev.metadata.data);
-              document.getElementById("result").innerHTML = removeInitialChar(ev.metadata.data);
+          //alert(ev.metadata.data);
+          document.getElementById("result").innerHTML = removeInitialChar(ev.metadata.data);
 
-              var p = JSON.parse(ev.metadata.data);
-              console.log(p);
-        });
+          var p = JSON.parse(ev.metadata.data);
+          console.log(p);
+    });
 
-        MagneticScanner.packetRead.connect(function(ev){
-              console.log('Data has been received: ', JSON.stringify(ev.metadata));
+    MagneticScanner.packetRead.connect(function(ev){
+          console.log('Data has been received: ', JSON.stringify(ev.metadata));
 
-              //alert(ev.metadata.data);
-              document.getElementById("result").innerHTML = removeInitialChar(ev.metadata.data);
+          //alert(ev.metadata.data);
+          document.getElementById("result").innerHTML = removeInitialChar(ev.metadata.data);
 
-              var p = JSON.parse(ev.metadata.data);
-              console.log(p);
-        });
-        function create_connection(ip, host)
-        {
-            ip = document.getElementById("host").value;
-            port = document.getElementById("port").value;
-            sellPoint.initialize_connection_layer(CONN_DEVICE.TCP, ip, port);
-            sellPoint.connect();
-        }
-        function hello_world()
-        {
-            ESCPOSPrinter.init();
-            ESCPOSPrinter.setTextProperties(0,0,4,2,2);
-            ESCPOSPrinter.printRawText("...HELLO WORLD...");
-            ESCPOSPrinter.feedControl(0);
-        }
+          var p = JSON.parse(ev.metadata.data);
+          console.log(p);
+    });
+    function create_connection(ip, host)
+    {
+        ip = document.getElementById("host").value;
+        port = document.getElementById("port").value;
+        sellPoint.initialize_connection_layer(CONN_DEVICE.TCP, ip, port);
+        sellPoint.connect();
+    }
+    function test1()
+    {
+        ESCPOSPrinter.init();
+        ESCPOSPrinter.setTextProperties(0,0,4,2,2);
+        ESCPOSPrinter.printRawText("...HELLO WORLD...");
+        ESCPOSPrinter.feedControl(0);
+    }
 
-        function text_align()
-        {
-            ESCPOSPrinter.init();
-            ESCPOSPrinter.setTextProperties(2,0,0,1,1);
-            ESCPOSPrinter.printRawText("align-left, font-A, type-B, width-normal, heigth-normal");
-            ESCPOSPrinter.feedControl(0);
-            ESCPOSPrinter.feedControl(0);
-            ESCPOSPrinter.setTextProperties(0,1,0,1,1);
-            ESCPOSPrinter.printRawText("align-center, font-B, type-B, width-normal, heigth-normal");
-            ESCPOSPrinter.feedControl(0);
-            ESCPOSPrinter.feedControl(0);
-            ESCPOSPrinter.setTextProperties(1,1,1,2,1);
-            ESCPOSPrinter.printRawText("align-right, font-B, type-U, width-double, heigth-normal");
-            ESCPOSPrinter.feedControl(0);
-            ESCPOSPrinter.feedControl(0);
-            ESCPOSPrinter.setTextProperties(1,1,2,1,2);
-            ESCPOSPrinter.printRawText("align-right, font-B, type-U2, width-normal, heigth-double");
-            ESCPOSPrinter.feedControl(0);
-            ESCPOSPrinter.feedControl(0);
-            ESCPOSPrinter.setTextProperties(0,0,4,2,2);
-            ESCPOSPrinter.printRawText("align-center, font-A, type-BU2, width-double, heigth-double");
-            ESCPOSPrinter.feedControl(0);
-            ESCPOSPrinter.feedControl(0);
-        }
+    function test2()
+    {
+        ESCPOSPrinter.init();
+        ESCPOSPrinter.setTextProperties(2,0,0,1,1);
+        ESCPOSPrinter.printRawText("align-left, font-A, type-B, width-normal, heigth-normal");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.setTextProperties(0,1,0,1,1);
+        ESCPOSPrinter.printRawText("align-center, font-B, type-B, width-normal, heigth-normal");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.setTextProperties(1,1,1,2,1);
+        ESCPOSPrinter.printRawText("align-right, font-B, type-U, width-double, heigth-normal");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.setTextProperties(1,1,2,1,2);
+        ESCPOSPrinter.printRawText("align-right, font-B, type-U2, width-normal, heigth-double");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.setTextProperties(0,0,4,2,2);
+        ESCPOSPrinter.printRawText("align-center, font-A, type-BU2, width-double, heigth-double");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.feedControl(0);
+    }
 
+    function test3()
+    {
+        ESCPOSPrinter.init();
+        ESCPOSPrinter.setTextProperties(0,0,0,1,1);
+        ESCPOSPrinter.printRawText("Two empty lines and cut..");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.cutPaper();
+    }
 
+    function test4()
+    {
+        ESCPOSPrinter.init();
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printImage(":/zimtronic-logo.png", 0, 9);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printImage(":/zimtronic-logo.png", 1, 7);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printImage(":/zimtronic-logo.png", 2, 5);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printImage(":/zimtronic-logo.png", 3, 3);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printImage(":/zimtronic-logo.png", 4, 1);
+        ESCPOSPrinter.feedControl(0);
+    }
+
+    function test5()
+    {
+        ESCPOSPrinter.init();
+        ESCPOSPrinter.setTextProperties(0,0,0,1,1);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printRawText("Code \"12345678901\" width-2,heigth-30,font-B");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printBarcode("12345678901", 65, 2, 50, 0, 1);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printRawText("Code \"12345678901\" width-3,heigth-50,font-B");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printBarcode("12345678901", 65, 3, 50, 0, 1);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printRawText("Code \"12345678901\" width-4,heigth-70,font-B");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printBarcode("12345678901", 65, 4, 70, 0, 1);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printRawText("Code \"12345678901\" width-5,heigth-90,font-A");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printBarcode("12345678901", 65, 5, 90, 0, 0);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printRawText("Code \"12345678901\" width-6,heigth-110,font-A");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printBarcode("12345678901", 65, 6, 110, 0, 0);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printRawText("Code \"12345678901\" text above");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printBarcode("12345678901", 69, 2, 50, 1, 1);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printRawText("Code \"ZIMTRONIC\" text below");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printBarcode("ZIMTRONIC", 69, 2, 50, 2, 1);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printRawText("Code \"ZIMTRONIC$%\" text above and below");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printBarcode("ZIMTRONIC$%", 69, 2, 50, 2, 1);
+        ESCPOSPrinter.feedControl(0);
+    }
+
+    function test6()
+    {
+        ESCPOSPrinter.init();
+        ESCPOSPrinter.setTextProperties(0,0,0,1,1);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printQRCode("HELLO", 51, 3);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printQRCode("HELLO", 51, 5);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printQRCode("ZIMTRONIC", 51, 7);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printQRCode("ZIMTRONIC", 51, 9);
+        ESCPOSPrinter.feedControl(0);
+    }
+
+    function test7()
+    {
+        ESCPOSPrinter.init();
+        ESCPOSPrinter.printImage(":/zimtronic-pos.png", 1, 15);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.setTextProperties(0,0,4,1,2);
+        ESCPOSPrinter.printRawText("MANAGER -> RENE LOPEZ --STATION V");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.setTextProperties(0,0,4,1,1);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printRawText("5/11/2014   01:48 AM");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printRawText("Product                      Price");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printRawText("----------------------------------");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printRawText("Milk 65 Fl oz                 3.40");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printRawText("Cookies                       5.00");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printRawText("Subtotal                      8.40");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printRawText("Tax 10%                       0.84");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printRawText("Total                         9.24");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printRawText("Cash tend                    10.00");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printRawText("Cash due                      0.76");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.setTextProperties(0,0,4,1,2);
+        ESCPOSPrinter.printRawText("                            THANKS");
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.printBarcode("ZIMTRONIC$%", 69, 2, 50, 2, 1);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.feedControl(0);
+        ESCPOSPrinter.cutPaper();
+    }
     </script>
 </head>
 <body onload="init();" id="stage" class="theme">
-<h1>SellPoint App Test</h1>
+<h1>Posjs V2 App Test</h1>
 <div id="info">
     <h4>Cordova: <span id="cordova"> &nbsp;</span></h4>
     <h4>Deviceready: <span id="deviceready"> &nbsp;</span></h4>
 </div>
 <div id="info">
-    <h2 id="result">Waiting for server result</h2>
+    <h4 id="result">Waiting for server result</h4>
 </div>
 <div>
     <b>Host</b> <input id="host" class="btn large" value="10.8.25.111"></input>
@@ -108,18 +236,13 @@
 </div>
 <button class="btn large" onclick="create_connection()">Connect</button>
 
-<button class="btn large"  onclick="hello_world();">Hello World</button>
-<button class="btn large"  onclick="text_align();">Text Align</button>
-<button class="btn large"  onclick="ESCPOSPrinter.cutPaper(true)">cutPaper</button>
-<button class="btn large"  onclick="ESCPOSPrinter.sendPulseToCashDrawer(2)">sendPulseToCashDrawer</button>
-<button class="btn large"  onclick="ESCPOSPrinter.setTextProperties(0, 1, 2, 3, 4)">setTextProperties</button>
-<button class="btn large"  onclick="ESCPOSPrinter.feedControl(1)">feedControl</button>
-<button class="btn large"  onclick="ESCPOSPrinter.printImage('~/image/foo.img',1,1)">printImage</button>
-<button class="btn large"  onclick="ESCPOSPrinter.printBarcode('code',1, 1, 1, 1, 1)">printBarcode</button>
-<button class="btn large"  onclick="ESCPOSPrinter.printQRCode('code',1, 1)">printQRCode</button>
-<button class="btn large"  onclick="ESCPOSPrinter.setTimeout(100)">setTimeout</button>
-<button class="btn large"  onclick="sellPoint.isConnected()">is Connected</button>
-<button class="btn large"  onclick="sellPoint.send('BTest')">Send</button>
+<button class="btn large"  onclick="test1();">Hello World</button>
+<button class="btn large"  onclick="test2();">Text Align</button>
+<button class="btn large"  onclick="test3()">Feed and Cut</button>
+<button class="btn large"  onclick="test4()">Print Image</button>
+<button class="btn large"  onclick="test5()">Print Barcode</button>
+<button class="btn large"  onclick="test6()">Print QRCode</button>
+<button class="btn large"  onclick="test7()">Ticket Example</button>
 <button class="btn large"  onclick="sellPoint.disconnect()">Disconnect</button>
 <button class="btn large"  onclick="sellPoint.disconnectAll()">DisconnectAll</button>
 

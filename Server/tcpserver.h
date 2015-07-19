@@ -4,17 +4,17 @@
 #include <QTcpServer>
 #include <QList>
 
-class Connection;
+#include "posdriverinterface.h"
 
-class ITicketPrinter;
-class ITransport;
-class GenericHIDScanner;
+class Connection;
 
 class TCPServer : public QTcpServer
 {
 public:
     TCPServer(QObject *parent = 0);
-     void garbageCollector();
+    void garbageCollector();
+
+    POSDriverInterface *getPosdriver() const;
 
 public slots:
     void publishPacket(QString packet);
@@ -25,10 +25,8 @@ protected:
 private:
     QList<Connection*> connections;
 
-    ITicketPrinter *printer;
-    ITransport * transport;
-    GenericHIDScanner *hidBarcode;
-    GenericHIDScanner *hidMagnetic;
+    void loadDriver();
+    POSDriverInterface *posdriver;
 };
 
 #endif // TCPSERVER_H

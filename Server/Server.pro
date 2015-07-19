@@ -22,22 +22,10 @@ INCLUDEPATH += /usr/include
 SOURCES += main.cpp \
     connection.cpp \
     tcpserver.cpp \
-    drivers/escposprinter.cpp \
-    drivers/generichidscanner.cpp \
-    drivers/linuxusb.cpp \
-    drivers/linuxusbhid.cpp \
     controller.cpp
 
 HEADERS += \
     connection.h \
     tcpserver.h \
-    drivers/errors.h \
-    drivers/escposcommands.h \
-    drivers/escposprinter.h \
-    drivers/generichidscanner.h \
-    drivers/hidtable.h \
-    drivers/iticketprinter.h \
-    drivers/itransport.h \
-    drivers/linuxusb.h \
-    drivers/linuxusbhid.h \
-    controller.h
+    controller.h \
+    posdriverinterface.h

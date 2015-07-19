@@ -72,7 +72,6 @@ function stub(d) {
 function req_disconnect(d)
 {
     document.getElementById("result").innerHTML = "NOT CONNECTED";
-
 }
 
 function repeat_validation()
@@ -203,11 +202,11 @@ ESCPOSPrinter.printImage = function (pathImage, rightTab, sizeScale){
 }
 
 ESCPOSPrinter.printBarcode = function (code, type, width, height, pos, font){
-  sellPoint.send('6' + parseInt(code.length) + code + parseInt(type) + ":" + parseInt(width) + ":" + parseInt(height) + ":" + parseInt(pos) + ":" + parseInt(font)+ "</end>");
+  sellPoint.send('6' + parseInt(code.length) + ":" + code + parseInt(type) + ":" + parseInt(width) + ":" + parseInt(height) + ":" + parseInt(pos) + ":" + parseInt(font)+ "</end>");
 }
 
 ESCPOSPrinter.printQRCode = function (code, errCorrect, moduleSize){
-  sellPoint.send('7' + parseInt(code.length) + code + parseInt(errCorrect) + ":" + parseInt(moduleSize)+ "</end>");
+  sellPoint.send('7' + parseInt(code.length) + ":" + code + parseInt(errCorrect) + ":" + parseInt(moduleSize)+ "</end>");
 }
 
 ESCPOSPrinter.setTimeout = function (value){

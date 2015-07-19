@@ -10,9 +10,6 @@ enum ConnectionState {
     ReadyForUse
 };
 
-class ITicketPrinter;
-class ITransport;
-class GenericHIDScanner;
 class TCPServer;
 
 class Connection : public QObject
@@ -27,17 +24,6 @@ public:
     ConnectionState getState() const;
     void setState(const ConnectionState &value);
 
-    ITicketPrinter *getPrinter() const;
-    void setPrinter(ITicketPrinter *value);
-
-    GenericHIDScanner *getHidBarcode() const;
-    void setHidBarcode(GenericHIDScanner *value);
-
-    GenericHIDScanner *getHidMagnetic() const;
-    void setHidMagnetic(GenericHIDScanner *value);
-
-signals:
-
 public slots:
     void onReadyRead();
     void onDisconnected();
@@ -47,10 +33,6 @@ public slots:
 private:
     QTcpSocket *socket;
     ConnectionState state;
-
-    ITicketPrinter *printer;
-    GenericHIDScanner *hidBarcode;
-    GenericHIDScanner *hidMagnetic;
 
     TCPServer *serverPtr;
 
