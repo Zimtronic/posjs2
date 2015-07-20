@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="zimtronic-logo.png">../docs/images/zimtronic-logo.png</file>
+        <file alias="zimtronic-pos.png">../docs/images/zimtronic-pos.png</file>
+    </qresource>
+</RCC>

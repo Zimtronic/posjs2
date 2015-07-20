@@ -91,7 +91,7 @@ void Connection::sendMagneticCode(QString data)
 
 void Connection::onCommandArrived(QString command)
 {
-    qDebug() << "onCommandArrived: " << command;
+//    qDebug() << "onCommandArrived: " << command;
     if((int)command[0].toLatin1() == 10)
     {
         command = command.right(command.length() - 1);

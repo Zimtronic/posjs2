@@ -9,8 +9,6 @@ QT       += core network widgets
 LIBS += -L/usr/lib/$$system(uname -i)-linux-gnu
 LIBS += -lusb
 
-QT       -= gui
-
 TARGET = Server
 CONFIG   += console
 CONFIG   -= app_bundle
@@ -29,3 +27,6 @@ HEADERS += \
     tcpserver.h \
     controller.h \
     posdriverinterface.h
+
+RESOURCES += \
+    resource.qrc
